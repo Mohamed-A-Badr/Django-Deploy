@@ -1,2 +1,1 @@
-web: uvicorn main:app --reload
-worker: python .\adminPanel\manage.py runserver 5000
+web: gunicorn adminPanel.wsgi --log-file -
