@@ -79,7 +79,7 @@ class Location(models.Model):
 class Patient(models.Model):
     first_name = models.CharField(max_length=50, blank=True, null=True)
     last_name = models.CharField(max_length=50, blank=True, null=True)
-    gender = models.CharField(max_length=5, blank=True, null=True)
+    gender = models.CharField(max_length=10, blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)
     chair = models.ForeignKey(Chair, models.DO_NOTHING, blank=True, null=True)
 
