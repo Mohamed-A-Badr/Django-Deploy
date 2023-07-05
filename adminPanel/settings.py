@@ -82,7 +82,17 @@ WSGI_APPLICATION = "adminPanel.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
+DATABASES  = {
+    'default' : 
+    {
+        'ENGINE' : 'django.db.backends.postgresql',
+        'NAME' : 'graduation_project' ,
+        'USER' : 'robobrain' , 
+        'PASSWORD' : 'graduation',
+        'HOST' : 'gp.cdotyt702xan.eu-north-1.rds.amazonaws.com',
+        'PORT' : '5432',
+    }
+}
 
 
 # Password validation
