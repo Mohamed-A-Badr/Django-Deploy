@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 from environs import Env
 
@@ -35,6 +36,8 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_tools_stats',  # this must be BEFORE 'admin_tools' and 'django.contrib.admin'
+    'django_nvd3',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     # local
     "panel",
     # 3rd part
+    'djangobower',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +142,15 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# BOWER_COMPONENTS_ROOT = os.path.join(PROJECT_ROOT, 'components')
+
+
+BOWER_INSTALLED_APPS = (
+        'd3#3.3.13',
+        'nvd3#1.8.6',
+    )
+
+STATICFILES_FINDERS = (
+        
+        'djangobower.finders.BowerFinder',
+)
