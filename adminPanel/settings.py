@@ -36,8 +36,8 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    'admin_tools_stats',  # this must be BEFORE 'admin_tools' and 'django.contrib.admin'
-    'django_nvd3',
+    "admin_tools_stats",  # this must be BEFORE 'admin_tools' and 'django.contrib.admin'
+    "django_nvd3",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     # local
     "panel",
     # 3rd part
-    'djangobower',
+    "djangobower",
 ]
 
 MIDDLEWARE = [
@@ -86,18 +86,21 @@ WSGI_APPLICATION = "adminPanel.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES  = {
-    'default' : 
-    {
-        'ENGINE' : 'django.db.backends.postgresql',
-        'NAME' : 'graduation_project' ,
-        'USER' : 'robobrain' , 
-        'PASSWORD' : 'graduation',
-        'HOST' : 'gp.cdotyt702xan.eu-north-1.rds.amazonaws.com',
-        'PORT' : '5432',
-    }
-}
+# RDS AWS
 
+# DATABASES  = {
+#     'default' :
+#     {
+#         'ENGINE' : 'django.db.backends.postgresql',
+#         'NAME' : 'graduation_project' ,
+#         'USER' : 'robobrain' ,
+#         'PASSWORD' : 'graduation',
+#         'HOST' : 'gp.cdotyt702xan.eu-north-1.rds.amazonaws.com',
+#         'PORT' : '5432',
+#     }
+# }
+
+DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -146,11 +149,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 BOWER_INSTALLED_APPS = (
-        'd3#3.3.13',
-        'nvd3#1.8.6',
-    )
-
-STATICFILES_FINDERS = (
-        
-        'djangobower.finders.BowerFinder',
+    "d3#3.3.13",
+    "nvd3#1.8.6",
 )
+
+STATICFILES_FINDERS = ("djangobower.finders.BowerFinder",)

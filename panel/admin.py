@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Patient, Chair, Caregiver, Caregiverphone, SensorData, Location
-from .forms import ChairAdminForm
+from .forms import ChairAdminForm, PatientAdminForm
 
 # Register your models here.
 
@@ -34,7 +34,11 @@ class ChairAdmin(admin.ModelAdmin):
     form = ChairAdminForm
 
 
-admin.site.register(Patient)
+class PatientAdmin(admin.ModelAdmin):
+    form = PatientAdminForm
+
+
+admin.site.register(Patient, PatientAdmin)
 admin.site.register(Caregiver, CaregiverAdmin)
 admin.site.register(Chair, ChairAdmin)
 admin.site.register(SensorData)
